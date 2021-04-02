@@ -1,6 +1,6 @@
 <template>
   <swiper>
-    <swiper-item v-for="item in banner">
+    <swiper-item v-for="item in banners">
       <a :href="item.link">
         <img :src="item.image" alt="">
       </a>
@@ -13,7 +13,7 @@ import {Swiper,SwiperItem} from 'components/common/swiper'
 export default {
   name: "HomeSwiper",
   props:{
-    banner:{
+    banners:{
       type:Array,
       default(){
         return []
