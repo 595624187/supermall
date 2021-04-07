@@ -8,8 +8,6 @@
 export default {
   name: "BackTop",
   methods:{
-    backClick(){
-    }
   },
 
 }
