@@ -2,15 +2,14 @@
   <div id="home">
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
 
-    <scroll class="content">
+    <scroll class="content" ref="scroll">
       <home-swiper :banners="banner"></home-swiper>
       <recommend-view :recommends="recommend"></recommend-view>
       <feature-view></feature-view>
       <tab-control class="tab-control" :titles="['流行','新款','精选']"></tab-control>
       <goods-list :goods="getData"></goods-list>
-
     </scroll>
-
+    <back-top @click.native="backClick"></back-top>
   </div>
 </template>
 
@@ -22,6 +21,7 @@ import FeatureView from '@/views/home/childComps/FeatureView'
 import TabControl from 'components/content/tabControl/TabControl'
 import GoodsList from 'components/content/goods/GoodsList'
 import Scroll from 'components/common/scroll/Scroll'
+import BackTop from 'components/content/backTop/BackTop'
 
 import {getHomeMultidata,getHomeGoods} from 'network/home'
 export default {
@@ -34,6 +34,7 @@ export default {
     TabControl,
     GoodsList,
     Scroll,
+    BackTop,
   },
   data(){
     return{
@@ -69,6 +70,10 @@ export default {
         this.dKeyword = res.data.dKeyword.list
       })
     },
+    backClick(){
+      this.$refs.scroll.scrollTo(0,0)
+    }
+
     // getHomeGoods(type){
     //   const page = this.goods[type].page+1
     //   getHomeGoods(type,page).then(res=>{
