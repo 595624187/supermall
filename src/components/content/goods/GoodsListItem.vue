@@ -44,6 +44,6 @@ export default {
 .goods-info span{
   display:inline-block;
   padding: 10px;
-  font-size: 18px;
+  font-size: 15px;
 }
 </style>

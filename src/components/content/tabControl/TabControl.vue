@@ -38,6 +38,7 @@ export default {
   display:flex;
   text-align: center;
   font-size: 16px;
+  z-index: 9;
 }
 .tab-control-item{
   flex:1;

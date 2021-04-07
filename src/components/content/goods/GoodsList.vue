@@ -12,14 +12,13 @@ export default {
   name: "GoodsList",
   props:{
     goods:{
-      type:Object,
+      type:Array,
       default(){
         return {}
       }
     }
   },
   created(){
-    console.log(this.goods[0])
   },
   components:{
     GoodsListItem

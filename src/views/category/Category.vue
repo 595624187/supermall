@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <ul class="content">
+      <button>按钮</button>
       <li>分类列表1</li>
       <li>分类列表2</li>
       <li>分类列表3</li>
@@ -209,13 +210,27 @@
 import BScroll from 'better-scroll'
 export default {
   name: "Category",
+  data(){
+    return{
+    }
+  },
   created(){
 
   },
   mounted(){
-  new BScroll('.wrapper',{
-
+  this.scroll = new BScroll('.wrapper',{
+    probeType:3,
+    pullUpLoad:true,
   })
+  this.scroll.on('scroll',(position)=>{
+    console.log(position)
+  })
+    this.scroll.on('pullingUp',()=>{
+      console.log('上拉加载更多')
+    })
+  },
+  methods:{
+
   }
 }
 </script>
