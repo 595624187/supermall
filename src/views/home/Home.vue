@@ -2,7 +2,12 @@
   <div id="home">
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
 
-    <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll">
+    <scroll class="content"
+            ref="scroll"
+            :probe-type="3"
+            @scroll="contentScroll"
+            :pull-up-load="true"
+            @scrollEnd="loadMore">
       <home-swiper :banners="banner"></home-swiper>
       <recommend-view :recommends="recommend"></recommend-view>
       <feature-view></feature-view>
@@ -24,6 +29,8 @@ import Scroll from 'components/common/scroll/Scroll'
 import BackTop from 'components/content/backTop/BackTop'
 
 import {getHomeMultidata,getHomeGoods} from 'network/home'
+
+
 export default {
   name: "Home",
   components:{
@@ -61,6 +68,8 @@ export default {
     // this.getHomeGoods('new')
     // this.getHomeGoods('sell')
   },
+  mounted(){
+  },
   methods:{
     getHomeMultidata(){
       getHomeMultidata().then(res=>{
@@ -76,6 +85,10 @@ export default {
     },
     contentScroll(position){
       this.isShowBackTop = -position.y>1000
+    },
+    loadMore(){
+      console.log('上拉加载更多');
+      this.$refs.scroll.scroll.refresh()
     },
 
     // getHomeGoods(type){
